@@ -24,6 +24,15 @@
     height: 50px;
 }
 
+.todoCard:hover {
+    cursor: pointer;
+}
+
+.todoCard p {
+    margin-left: auto;
+    text-align: center;
+}
+
 .task {
     background-color: #85E3FF
 }
@@ -32,7 +41,12 @@
     background-color: #E64661
 }
 
-.todoCard p {
-    margin-left: auto;
-    text-align: center;
+.add {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+}
+
+.add * {
+    margin-top: 10px;
 }

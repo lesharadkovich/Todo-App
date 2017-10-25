@@ -3,14 +3,22 @@ import { connect } from 'react-redux'
 // import { toggleTodo } from '../actions'
 
 
-const TodoListCategory = ({todos}) => (
+const TodoListCategory = ({todos, onTodoClick}) => (
     <div>
         <ul>               
             {todos.map((todo, index) => {
                 let className = 'todoCard ' + todo.type;
                 
                 return (
-                    <li className={className} key={index}> 
+                    <li 
+                        className={className} 
+                        key={index} 
+                        onClick={e => {
+                            e.preventDefault()
+                            onTodoClick()
+                        }}
+                    >
+
                         <p> #{todo.id} { todo.name } </p>
                     </li>
                 )
@@ -22,8 +30,7 @@ const TodoListCategory = ({todos}) => (
 
 const getTodos = (todos, category) => {
     return todos.filter(function(todo) {
-        if(todo.status === category)
-            return todo;
+        if(todo.status === category) return todo;
     });
 }
 
@@ -35,9 +42,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // onTodoClick: id => {
-        //     dispatch(toggleTodo(id))
-        // }
+        onTodoClick: (id) => {
+            dispatch({type: 'OPEN_DETAILS'})
+        }
     }
 }
 
