@@ -1,19 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-let index = 5;
-
-function addCard(name, typeOfCard, status) {
+function editCard(id, name, typeOfCard, status) {
     return {
-        type: 'ADD_NEW_CARD',
-        id: index++,
+        type: 'EDIT_CARD',
+        id,
         name,
         typeOfCard,
         status
     }
 }
 
-let AddTodo = ({ dispatch }) => {
+let EditTodoContainer = ({ id, onTodoClick }) => {
     let input, selectType, selectStatus;
 
     return (
@@ -26,7 +24,7 @@ let AddTodo = ({ dispatch }) => {
                         return;
                     }
 
-                    dispatch(addCard(input.value, selectType.value, selectStatus.value))
+                    onTodoClick(id, input.value, selectType.value, selectStatus.value)
                     input.value = ''
                 }}
             >
@@ -50,6 +48,27 @@ let AddTodo = ({ dispatch }) => {
     )   
 }
 
-AddTodo = connect()(AddTodo)
 
-export default AddTodo;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        id: ownProps.id
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onTodoClick: (id, input, selectType, selectStatus) => {
+            dispatch(editCard(id, input, selectType, selectStatus))
+        }
+    }
+}
+
+// const EditTodo = connect()(EditTodoContainer);
+
+const EditTodo = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(EditTodoContainer)
+
+
+export default EditTodo;

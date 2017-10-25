@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 // import { toggleTodo } from '../actions'
 
 
@@ -8,19 +9,23 @@ const TodoListCategory = ({todos, onTodoClick}) => (
         <ul>               
             {todos.map((todo, index) => {
                 let className = 'todoCard ' + todo.type;
-                
-                return (
-                    <li 
-                        className={className} 
-                        key={index} 
-                        onClick={e => {
-                            e.preventDefault()
-                            onTodoClick()
-                        }}
-                    >
+                let url = '/details/' + todo.id;
 
-                        <p> #{todo.id} { todo.name } </p>
-                    </li>
+                return (
+                    <Link to={url} key={todo.id}>
+                        <li className={className}>
+                            <p> #{todo.id} { todo.name } 
+                                <button 
+                                    onClick={e => {
+                                        e.preventDefault()
+                                        onTodoClick(todo.id)
+                                    }}>
+                                    Delete this card
+                                </button>
+                            </p>
+                            
+                        </li>
+                    </Link>
                 )
             })}
         </ul>
@@ -36,14 +41,14 @@ const getTodos = (todos, category) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        todos: getTodos(state.todos, ownProps.category)
+        todos: getTodos(state, ownProps.category)
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onTodoClick: (id) => {
-            dispatch({type: 'OPEN_DETAILS'})
+            dispatch({type: 'DELETE_CARD', id: id})
         }
     }
 }

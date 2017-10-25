@@ -1,12 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+
 import TodoList from './TodoListCategory'
-import AddTodo from './AddTodo'
 
-let Table = ({ dispatch }) => {
-    let input, selectType, selectStatus;
-
-    return (
+let Table = ({ dispatch }) => (
     <div>
         <div className='table'>
             <div className='tableColumn'>
@@ -31,11 +28,9 @@ let Table = ({ dispatch }) => {
             </div>
         </div>
 
-        <AddTodo />
+        <Link to="/addTask"><div className='addTaskButton'>+</div></Link>
         
     </div>    
-)}
-
-// Table = connect()(Table)
+)
 
 export default Table;

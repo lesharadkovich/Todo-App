@@ -1,39 +1,36 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 
-const DetailsContainer = ({todoCard, onBackClick}) => (
+import EditTodo from './EditTodo'
+
+
+const Details = ({ match: { params } }) => {    
+    return (
     <div>
-        <div></div>
+        <EditTodo id={params.id}/>
 
-        <button 
-            onClick={e => {
-                e.preventDefault()
-                onBackClick()
-            }}
-        >
-            Back
-        </button>
+        <Link to="/"><button>Back</button></Link>
     </div>
-)
+)}
 
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        // todoCard: getTodos(state.todos, ownProps.category)
-    }
-}
+// const mapStateToProps = (state, ownProps) => {
+//     return {
+//         id: ownProps.id
+//     }
+// }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onBackClick: () => {
-            dispatch({type: 'OPEN_DETAILS'})
-        }
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         // onBackClick: () => {
+//         //     dispatch({type: 'OPEN_DETAILS'})
+//         // }
+//     }
+// }
 
-const Details = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(DetailsContainer)
+// const Details = connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(DetailsContainer)
 
 export default Details
