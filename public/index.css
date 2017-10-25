@@ -1,0 +1,38 @@
+.table {
+    display: flex;
+}
+
+.tableColumn {
+    width: 20%;
+}
+
+.categoryName {
+    font-size: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.table ul {
+    padding-left: 0;
+}
+
+.todoCard {
+    list-style-type: none;
+
+    border: 1px solid black;
+    margin: 10px 50px 0 50px;
+    height: 50px;
+}
+
+.task {
+    background-color: #85E3FF
+}
+
+.bug {
+    background-color: #E64661
+}
+
+.todoCard p {
+    margin-left: auto;
+    text-align: center;
+}
