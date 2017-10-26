@@ -27,13 +27,15 @@
 .todoCard {
     list-style-type: none;
 
-    border: 1px solid black;
+    border: 1px solid transparent;
+    border-radius: 3px;
     margin: 10px 50px 0 50px;
     height: 50px;
 }
 
 .todoCard:hover {
     cursor: pointer;
+    border-color: darkgray;
 }
 
 .todoCard p {
@@ -63,7 +65,7 @@
 .add {
     display: flex;
     flex-direction: column;
-    width: 10%;
+    width: 20%;
 }
 
 .add * {
@@ -83,25 +85,70 @@
 }
 
 .backButton {
-    margin-top: 10px;
+    width: fit-content;
+    font-size: 20px;
+    width: 20%;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(221, 221, 221);
+    outline: none;
+}
+
+.backButton:hover {
+    cursor: pointer;
 }
 
 .submitButton {
+    font-size: 20px;
+    width: 20%;
     padding: 5px 0 5px 0;
     text-align: center;
-    background: #27B827;
+    background: #4CAF50;
     margin-bottom: 10px;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
 }
 
 .addTaskButton:hover, .submitButton:hover {
     cursor: pointer;
     transition: 0.5s;
-    background: #5DE05D;
+    background: #45a049;
 }
 
 .deleteButton {
-    height: 30%;
+    height: 100%;
     width: 10%;
+    border: 0;
+    border-bottom-left-radius: 4px;
+    background: transparent;
+    padding: 5px 0 5px 0;
+    outline: none;
+}
+
+.deleteButton:hover {
+    background: gray;
+    cursor: pointer;
+}
+
+.deleteCardButton {
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    width: 40%;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    background: #F73939;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.deleteCardButton:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background: #E60F0F;
 }
 
 .cardContent {
@@ -111,5 +158,40 @@
 
 #description {
     border: 1px solid black;
-    height: 300px;
+    height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    outline: none;
+
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+.todoEditPage {
+    margin-left: 50px;
+}
+
+.select select.is-hovered, .select select:hover {
+    border-color: #b5b5b5;
+}
+
+input, select {
+    font-size: 16px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.buttons {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
 }

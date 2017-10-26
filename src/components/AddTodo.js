@@ -7,10 +7,10 @@ import EditTodo from './EditTodo'
 
 let AddTodo = () => {
     return (
-        <div>
+        <div className='todoEditPage'>
             <EditTodo action='Add'/>
 
-            <Link to="/"><button className='backButton'>Back</button></Link>
+            <Link to="/"><div className='backButton'>Back</div></Link>
         </div>
     )   
 }

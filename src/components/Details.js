@@ -7,17 +7,17 @@ import EditTodo from './EditTodo'
 
 let Details = ({ match: { params }, dispatch }) => {    
     return (
-    <div>
-        <EditTodo id={params.id} action='Edit'/>
-
-        <button 
-            className='deleteButton'
-            onClick={e => {
-                e.preventDefault()
-                dispatch({type: 'DELETE_CARD', id: params.id})
-            }}>
-            Delete this card
-        </button>
+    <div className='todoEditPage'>
+        <EditTodo id={params.id} action='Edit'>
+            <button 
+                className='deleteCardButton'
+                onClick={e => {
+                    e.preventDefault()
+                    dispatch({type: 'DELETE_CARD', id: params.id})
+                }}>
+                Delete this card
+            </button>
+        </EditTodo>
 
         <br></br>
 

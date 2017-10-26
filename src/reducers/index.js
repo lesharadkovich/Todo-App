@@ -15,13 +15,13 @@ const todos = (state = initialState, action) => {
         
     } else if(action.type === 'EDIT_CARD') {
         return state.map(todo =>
-            (todo.id == action.id)
+            (todo.id === action.id)
                 ? { id: +action.id, name: action.name, type: action.typeOfCard, status: action.status, description: action.description }
                 : todo
         )
     } else if(action.type === 'DELETE_CARD') {
         return state.filter(todo => {
-            if(todo.id != action.id)
+            if(todo.id !== action.id)
                 return todo;
         })
     }

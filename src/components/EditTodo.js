@@ -25,14 +25,15 @@ function editCard(id, name, typeOfCard, status, description) {
     }
 }
 
-let EditTodoContainer = ( {todo, onTodoClick} ) => {
-    let input, selectType, selectStatus, description;
+let EditTodoContainer = ( {todo, onTodoClick, children} ) => {
+    let input, selectType, selectStatus, description, saveButton;
 
     let id = todo ? todo.id : null;
-    let defaultValue = todo ? todo.name : '';
+    let defaultInputValue = todo ? todo.name : '';
     let defaultDescription = todo ? todo.description : '';
+    let defaultType = todo ? todo.type : '';
+    let defaultStatus = todo ? todo.status : '';
 
-    console.log(defaultDescription);
     return (
         <div>
             <form 
@@ -47,30 +48,38 @@ let EditTodoContainer = ( {todo, onTodoClick} ) => {
                     let statusValue = selectStatus.options[selectStatus.selectedIndex].value;
 
                     onTodoClick(id, input.value, typeValue, statusValue, description.textContent)
+                    saveButton.textContent = 'Saved!'
                 }}
             >
 
                 <input 
                     placeholder='Type name' 
                     name='name' 
-                    defaultValue={defaultValue}
+                    defaultValue={defaultInputValue}
                     ref={node => { input = node }}
                 ></input>
             
-                <select name='type' ref={node => { selectType = node }}>
-                    <option value="task">Task</option>
-                    <option value="bug">Bug</option>
-                </select>
+                <div className='select'>
+                    <select defaultValue={defaultType} name='type' ref={node => { selectType = node }}>
+                        <option value="task">Task</option>
+                        <option value="bug">Bug</option>
+                    </select>
+                </div>
 
-                <select name='status' ref={node => { selectStatus = node }}>
-                    <option value="ToDo">ToDo</option>
-                    <option value="InProgress">In progress</option>
-                    <option value="Done">Done</option>
-                </select>
+                <div className='select'>
+                    <select defaultValue={defaultStatus} name='status' ref={node => { selectStatus = node }}>
+                        <option value="ToDo">ToDo</option>
+                        <option value="InProgress">In progress</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
 
                 <div id='description' contentEditable ref={node => { description = node }}>{defaultDescription}</div>
             
-                <button className='submitButton' type="submit">Save</button>
+                <div className='buttons'>
+                    <button className='submitButton' type="submit" ref={node => { saveButton = node }}>Save</button>
+                    {children}
+                </div>
             </form>
         </div>
     )   
