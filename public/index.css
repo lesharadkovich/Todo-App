@@ -37,8 +37,7 @@
 }
 
 .todoCard p {
-    margin-left: auto;
-    text-align: center;
+    margin-left: 10px;
 }
 
 .task {
@@ -46,7 +45,19 @@
 }
 
 .bug {
-    background-color: #E64661
+    background-color: #E60F0F
+}
+
+.task:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: #66D4F3
+}
+
+.bug:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: #F73939
 }
 
 .add {
@@ -69,4 +80,36 @@
     background: #27B827;
 
     border-radius: 3px;
+}
+
+.backButton {
+    margin-top: 10px;
+}
+
+.submitButton {
+    padding: 5px 0 5px 0;
+    text-align: center;
+    background: #27B827;
+    margin-bottom: 10px;
+}
+
+.addTaskButton:hover, .submitButton:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background: #5DE05D;
+}
+
+.deleteButton {
+    height: 30%;
+    width: 10%;
+}
+
+.cardContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+#description {
+    border: 1px solid black;
+    height: 300px;
 }

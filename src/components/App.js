@@ -4,9 +4,7 @@ import Table from './Table'
 import Details from './Details'
 
 import { Router, Route } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
-
-const history = createBrowserHistory();
+import history from '../history'
 
 const App = () => (
 

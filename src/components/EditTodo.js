@@ -1,19 +1,38 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-function editCard(id, name, typeOfCard, status) {
+let index = 5;
+
+function addCard(name, typeOfCard, status, description) {
+    return {
+        type: 'ADD_NEW_CARD',
+        id: index++,
+        name,
+        typeOfCard,
+        status, 
+        description
+    }
+}
+
+function editCard(id, name, typeOfCard, status, description) {
     return {
         type: 'EDIT_CARD',
         id,
         name,
         typeOfCard,
-        status
+        status, 
+        description
     }
 }
 
-let EditTodoContainer = ({ id, onTodoClick }) => {
-    let input, selectType, selectStatus;
+let EditTodoContainer = ( {todo, onTodoClick} ) => {
+    let input, selectType, selectStatus, description;
 
+    let id = todo ? todo.id : null;
+    let defaultValue = todo ? todo.name : '';
+    let defaultDescription = todo ? todo.description : '';
+
+    console.log(defaultDescription);
     return (
         <div>
             <form 
@@ -24,12 +43,19 @@ let EditTodoContainer = ({ id, onTodoClick }) => {
                         return;
                     }
 
-                    onTodoClick(id, input.value, selectType.value, selectStatus.value)
-                    input.value = ''
+                    let typeValue = selectType.options[selectType.selectedIndex].value;
+                    let statusValue = selectStatus.options[selectStatus.selectedIndex].value;
+
+                    onTodoClick(id, input.value, typeValue, statusValue, description.textContent)
                 }}
             >
 
-                <input placeholder='Type name' name='name' ref={node => { input = node }}></input>
+                <input 
+                    placeholder='Type name' 
+                    name='name' 
+                    defaultValue={defaultValue}
+                    ref={node => { input = node }}
+                ></input>
             
                 <select name='type' ref={node => { selectType = node }}>
                     <option value="task">Task</option>
@@ -41,8 +67,10 @@ let EditTodoContainer = ({ id, onTodoClick }) => {
                     <option value="InProgress">In progress</option>
                     <option value="Done">Done</option>
                 </select>
+
+                <div id='description' contentEditable ref={node => { description = node }}>{defaultDescription}</div>
             
-                <button type="submit">Add new Todo card</button>
+                <button className='submitButton' type="submit">Save</button>
             </form>
         </div>
     )   
@@ -50,20 +78,31 @@ let EditTodoContainer = ({ id, onTodoClick }) => {
 
 
 const mapStateToProps = (state, ownProps) => {
+    let todo;
+
+    for(let i = 0; i < state.length; i++) {
+        if(state[i].id == ownProps.id) {
+            todo = state[i];
+            break;
+        }
+    }
+
     return {
-        id: ownProps.id
+        todo: todo
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onTodoClick: (id, input, selectType, selectStatus) => {
-            dispatch(editCard(id, input, selectType, selectStatus))
+        onTodoClick: (id, input, selectType, selectStatus, description) => {
+            if(ownProps.action === 'Edit') {
+                dispatch(editCard(id, input, selectType, selectStatus, description))
+            } else if(ownProps.action === 'Add') {
+                dispatch(addCard(input, selectType, selectStatus, description))
+            }
         }
     }
 }
-
-// const EditTodo = connect()(EditTodoContainer);
 
 const EditTodo = connect(
     mapStateToProps,

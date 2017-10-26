@@ -14,16 +14,19 @@ const TodoListCategory = ({todos, onTodoClick}) => (
                 return (
                     <Link to={url} key={todo.id}>
                         <li className={className}>
-                            <p> #{todo.id} { todo.name } 
+                            <div className='cardContent'>
+                                <p> #{todo.id} { todo.name } 
+                                    
+                                </p>
                                 <button 
+                                    className='deleteButton'
                                     onClick={e => {
                                         e.preventDefault()
                                         onTodoClick(todo.id)
                                     }}>
-                                    Delete this card
+                                    X
                                 </button>
-                            </p>
-                            
+                            </div>
                         </li>
                     </Link>
                 )

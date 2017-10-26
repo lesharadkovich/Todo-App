@@ -1,36 +1,30 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 import EditTodo from './EditTodo'
 
 
-const Details = ({ match: { params } }) => {    
+let Details = ({ match: { params }, dispatch }) => {    
     return (
     <div>
-        <EditTodo id={params.id}/>
+        <EditTodo id={params.id} action='Edit'/>
 
-        <Link to="/"><button>Back</button></Link>
+        <button 
+            className='deleteButton'
+            onClick={e => {
+                e.preventDefault()
+                dispatch({type: 'DELETE_CARD', id: params.id})
+            }}>
+            Delete this card
+        </button>
+
+        <br></br>
+
+        <Link to="/"><button className='backButton'>Back</button></Link>
     </div>
 )}
 
-
-// const mapStateToProps = (state, ownProps) => {
-//     return {
-//         id: ownProps.id
-//     }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         // onBackClick: () => {
-//         //     dispatch({type: 'OPEN_DETAILS'})
-//         // }
-//     }
-// }
-
-// const Details = connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(DetailsContainer)
+Details = connect()(Details);
 
 export default Details
