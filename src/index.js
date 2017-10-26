@@ -1,15 +1,23 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import todoAppReducer from './reducers'
-import App from './components/App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import createHistory from 'history/createBrowserHistory'
+import { routerMiddleware } from 'react-router-redux'
 
-let store = createStore(todoAppReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+import todoAppReducer from './reducers';
+import App from './components/App';
+import './css/index.css';
 
-render(
+const history = createHistory();
+const middleware = routerMiddleware(history)
+const store = createStore(todoAppReducer, applyMiddleware(middleware));
+
+ReactDOM.render(
     <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
-)
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <App />
+        </BrowserRouter>
+    </Provider>, document.getElementById('root')
+);
