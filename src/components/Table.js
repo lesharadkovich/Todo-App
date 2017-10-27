@@ -2,27 +2,26 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import TodoList from './TodoListCategory'
-import Header from './Header'
 
 let Table = ({ dispatch }) => (
     <div>
         <div className='table'>
             <div className='tableColumn'>
-                <p className='categoryName'>Todo</p>
+                <h2 className='categoryName'>Todo</h2>
                 
                 <TodoList category="ToDo">
                 </TodoList>
             </div>
 
             <div className='tableColumn'>
-                <p className='categoryName'>In Progress</p>
+                <h2 className='categoryName'>In Progress</h2>
                 
                 <TodoList category="InProgress">
                 </TodoList>
             </div>
 
             <div className='tableColumn'>
-                <p className='categoryName'>Done</p>
+                <h2 className='categoryName'>Done</h2>
                 
                 <TodoList category="Done">
                 </TodoList>

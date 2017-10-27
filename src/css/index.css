@@ -10,16 +10,37 @@ body {
     color: black;
 }
 
-h1 {
-    /* text-align: center; */
-}
-
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding-bottom: 10px;
     border-bottom: 1px solid black;
+}
+
+.topButtons {
+    display: flex;
+}
+
+.settingsButton {
+    color: #5252C2;
+    margin-left: 40px;
+}
+
+.addTaskButton {
+    color: #27B827;
+}
+
+.addTaskButton:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    color: #45a049;
+}
+
+.settingsButton:hover {
+    transition: 0.5s;
+    color: #333399;
+    cursor: pointer;
 }
 
 .table {
@@ -31,8 +52,17 @@ header {
     width: 30%;
 }
 
+.dragarea {
+    padding-top: 30px;
+    padding-bottom: 100px;
+    z-index: 5;
+}
+
+.dragging {
+    background: #9EBDD8;
+}
+
 .categoryName {
-    font-size: 20px;
     margin: auto;
     text-align: center;
 }
@@ -53,6 +83,7 @@ header {
     border: 1px solid transparent;
     border-radius: 10px;
     margin-top: 10px;
+    outline: none;
 }
 
 .todoCard:hover {
@@ -118,14 +149,6 @@ header {
     margin-top: 10px;
 }
 
-.addTaskButton {
-    width: fit-content;
-    font-size: 50px;
-    padding: 0 15px 0 15px;
-    background: #27B827;
-    border-radius: 30px;
-}
-
 .backButton {
     width: fit-content;
     font-size: 20px;
@@ -166,7 +189,7 @@ header {
     outline: none;
 }
 
-.addTaskButton:hover, .submitButton:hover {
+.submitButton:hover {
     cursor: pointer;
     transition: 0.5s;
     background: #45a049;

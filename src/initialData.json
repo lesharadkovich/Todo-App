@@ -1,6 +1,11 @@
 [
     {"id": 1, "name": "login page", "status": "ToDo", "type": "task", "description": "some description"}, 
-    {"id": 2, "name": "main page", "status": "ToDo", "type": "task", "description": "some description"},
-    {"id": 3, "name": "js error", "status": "InProgress", "type": "bug", "description": "some description"},
-    {"id": 4, "name": "install package", "status": "Done", "type": "task", "description": "some description"}
+    {"id": 2, "name": "main page", "status": "ToDo", "type": "task", "description": "improve mark-up in the main page"},
+    {"id": 3, "name": "js error", "status": "InProgress", "type": "bug", "description": "I just have no idea how to fix this"},
+    {"id": 4, "name": "install package", "status": "Done", "type": "task", "description": "This goddamn package finally has been installed"},
+    {"id": 6, "name": "add task #8", "status": "InProgress", "type": "task", "description": "how could I missed it"},
+    {"id": 7, "name": "learn redux", "status": "InProgress", "type": "task", "description": "learn more about redux"},
+    {"id": 9, "name": "english", "status": "ToDo", "type": "bug", "description": "do my english homework"},
+    {"id": 5, "name": "watch Game of Thrones", "status": "Done", "type": "task", "description": "fuck this deadline"},
+    {"id": 10, "name": "unknown error", "status": "Done", "type": "bug", "description": "what the hell is going on here"}
 ]

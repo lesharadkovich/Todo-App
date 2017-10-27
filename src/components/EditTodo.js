@@ -1,29 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addCard, editCard } from '../actions'
 
-let index = 5;
 
-function addCard(name, typeOfCard, status, description) {
-    return {
-        type: 'ADD_NEW_CARD',
-        id: index++,
-        name,
-        typeOfCard,
-        status, 
-        description
-    }
-}
-
-function editCard(id, name, typeOfCard, status, description) {
-    return {
-        type: 'EDIT_CARD',
-        id,
-        name,
-        typeOfCard,
-        status, 
-        description
-    }
-}
 
 let EditTodoContainer = ( {todo, onTodoClick, children} ) => {
     let input, selectType, selectStatus, description, saveButton;
