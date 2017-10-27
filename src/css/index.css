@@ -1,17 +1,34 @@
+body {
+    background: aliceblue;
+}
+
 * {
     text-decoration: none;
 }
 
 *:link, *:visited, *:active {
-    color: black; /* Цвет ссылок */
+    color: black;
+}
+
+h1 {
+    /* text-align: center; */
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
 }
 
 .table {
     display: flex;
+    justify-content: space-around;
 }
 
 .tableColumn {
-    width: 20%;
+    width: 30%;
 }
 
 .categoryName {
@@ -21,16 +38,21 @@
 }
 
 .table ul {
-    padding-left: 0;
+    padding: 0px 50px 0 50px;
+}
+
+.table ul li {
+    list-style-type: none;
 }
 
 .todoCard {
-    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 
     border: 1px solid transparent;
-    border-radius: 3px;
-    margin: 10px 50px 0 50px;
-    height: 50px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .todoCard:hover {
@@ -38,8 +60,22 @@
     border-color: darkgray;
 }
 
+.todoCard:hover .fa-trash {
+    display: block;
+}
+
 .todoCard p {
-    margin-left: 10px;
+    font-size: 20px;
+    /* width: 80%; */
+}
+
+.fa-trash {
+    display: none;
+}
+
+.fa-trash:hover {
+    transition: 0.3s;
+    transform: scale(1.3);
 }
 
 .task {
@@ -62,10 +98,20 @@
     background-color: #F73939
 }
 
-.add {
+
+.todoEditPage {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.add {
+    width: 35%;
+}
+
+.add form {
+    width: 100%;
 }
 
 .add * {
@@ -75,19 +121,15 @@
 .addTaskButton {
     width: fit-content;
     font-size: 50px;
-    margin-top: 30px;
-    margin-left: 50px;
-
     padding: 0 15px 0 15px;
     background: #27B827;
-
-    border-radius: 3px;
+    border-radius: 30px;
 }
 
 .backButton {
     width: fit-content;
     font-size: 20px;
-    width: 20%;
+    width: 100%;
     padding: 5px 0 5px 0;
     text-align: center;
     border: 0;
@@ -102,7 +144,7 @@
 
 .submitButton {
     font-size: 20px;
-    width: 20%;
+    width: 40%;
     padding: 5px 0 5px 0;
     text-align: center;
     background: #4CAF50;
@@ -112,11 +154,30 @@
     outline: none;
 }
 
+.deleteCardButton {
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    width: 40%;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    background: #F73939;
+    margin-bottom: 10px;
+    outline: none;
+}
+
 .addTaskButton:hover, .submitButton:hover {
     cursor: pointer;
     transition: 0.5s;
     background: #45a049;
 }
+
+.deleteCardButton:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background: #E60F0F;
+}
+
 
 .deleteButton {
     height: 100%;
@@ -133,28 +194,6 @@
     cursor: pointer;
 }
 
-.deleteCardButton {
-    font-size: 20px;
-    border: 0;
-    border-radius: 5px;
-    width: 40%;
-    padding: 5px 0 5px 0;
-    text-align: center;
-    background: #F73939;
-    margin-bottom: 10px;
-    outline: none;
-}
-
-.deleteCardButton:hover {
-    cursor: pointer;
-    transition: 0.5s;
-    background: #E60F0F;
-}
-
-.cardContent {
-    display: flex;
-    justify-content: space-between;
-}
 
 #description {
     border: 1px solid black;
@@ -170,10 +209,6 @@
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
-}
-
-.todoEditPage {
-    margin-left: 50px;
 }
 
 .select select.is-hovered, .select select:hover {

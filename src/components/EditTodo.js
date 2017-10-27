@@ -35,9 +35,9 @@ let EditTodoContainer = ( {todo, onTodoClick, children} ) => {
     let defaultStatus = todo ? todo.status : '';
 
     return (
-        <div>
+        <div className='add'>
             <form 
-                className='add'
+                
                 onSubmit={e => {
                     e.preventDefault();
                     if (!input.value.trim()) {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 import EditTodo from './EditTodo'
+import Header from './Header'
 
 
 let AddTodo = () => {

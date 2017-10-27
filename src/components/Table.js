@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import TodoList from './TodoListCategory'
+import Header from './Header'
 
 let Table = ({ dispatch }) => (
     <div>
@@ -26,10 +27,7 @@ let Table = ({ dispatch }) => (
                 <TodoList category="Done">
                 </TodoList>
             </div>
-        </div>
-
-        <Link to="/addTask"><div className='addTaskButton'>+</div></Link>
-        
+        </div>        
     </div>    
 )
 

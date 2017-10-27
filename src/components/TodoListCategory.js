@@ -4,31 +4,28 @@ import { Link } from 'react-router-dom';
 // import { toggleTodo } from '../actions'
 
 
-const TodoListCategory = ({todos, onTodoClick}) => (
+const TodoListCategory = ({ todos, onTodoClick }) => (
     <div>
-        <ul>               
+        <ul>
             {todos.map((todo, index) => {
                 let className = 'todoCard ' + todo.type;
                 let url = '/details/' + todo.id;
 
                 return (
-                    <Link to={url} key={todo.id}>
-                        <li className={className}>
-                            <div className='cardContent'>
-                                <p> #{todo.id} { todo.name } 
-                                    
-                                </p>
-                                <button 
-                                    className='deleteButton'
+                    <li>
+                        <Link to={url} key={todo.id}>
+                            <div className={className}>
+                                <p> #{todo.id} {todo.name}</p>
+                                <i
+                                    class="fa fa-trash fa-2x"
                                     onClick={e => {
                                         e.preventDefault()
                                         onTodoClick(todo.id)
-                                    }}>
-                                    X
-                                </button>
+                                    }}
+                                ></i>
                             </div>
-                        </li>
-                    </Link>
+                        </Link>
+                    </li>
                 )
             })}
         </ul>
@@ -37,8 +34,8 @@ const TodoListCategory = ({todos, onTodoClick}) => (
 
 
 const getTodos = (todos, category) => {
-    return todos.filter(function(todo) {
-        if(todo.status === category) return todo;
+    return todos.filter(function (todo) {
+        if (todo.status === category) return todo;
     });
 }
 
@@ -51,7 +48,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         onTodoClick: (id) => {
-            dispatch({type: 'DELETE_CARD', id: id})
+            dispatch({ type: 'DELETE_CARD', id: id })
         }
     }
 }
