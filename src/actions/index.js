@@ -1,4 +1,4 @@
-let index = 5;
+let index = 11;
 
 export function addCard(name, typeOfCard, status, description) {
     return {

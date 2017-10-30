@@ -33,10 +33,11 @@ const mapDispatchToProps = (dispatch, props) => {
             if(action === 'Edit') {
                 dispatch(editCard(id, input, selectType, selectStatus, description))
                 props.history.push('/');
-            } else if(action === 'Add') {
-                dispatch(addCard(input, selectType, selectStatus, description))
-                props.history.push('/');
-            }
+            } 
+            // else if(action === 'Add') {
+            //     dispatch(addCard(input, selectType, selectStatus, description))
+            //     props.history.push('/');
+            // }
         },
         onDeleteClick: (event, id) => {
             event.preventDefault()
