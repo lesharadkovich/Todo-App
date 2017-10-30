@@ -1,10 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addCard, editCard } from '../actions'
 
 
-
-let EditTodoContainer = ( {todo, onTodoClick, children} ) => {
+let EditTodoContainer = ( {todo, onTodoClick, action, children} ) => {
     let input, selectType, selectStatus, description, saveButton;
 
     let id = todo ? todo.id : null;
@@ -26,7 +24,7 @@ let EditTodoContainer = ( {todo, onTodoClick, children} ) => {
                     let typeValue = selectType.options[selectType.selectedIndex].value;
                     let statusValue = selectStatus.options[selectStatus.selectedIndex].value;
 
-                    onTodoClick(id, input.value, typeValue, statusValue, description.textContent)
+                    onTodoClick(id, input.value, typeValue, statusValue, description.textContent, action)
                     saveButton.textContent = 'Saved!'
                 }}
             >
@@ -76,25 +74,14 @@ const mapStateToProps = (state, ownProps) => {
     }
 
     return {
-        todo: todo
-    }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onTodoClick: (id, input, selectType, selectStatus, description) => {
-            if(ownProps.action === 'Edit') {
-                dispatch(editCard(id, input, selectType, selectStatus, description))
-            } else if(ownProps.action === 'Add') {
-                dispatch(addCard(input, selectType, selectStatus, description))
-            }
-        }
+        todo: todo,
+        action: ownProps.action,
+        onTodoClick: ownProps.onTodoClick
     }
 }
 
 const EditTodo = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(EditTodoContainer)
 
 

@@ -13,7 +13,7 @@ import './css/index.css';
 
 const history = createHistory();
 const middleware = routerMiddleware(history)
-const store = createStore(todoAppReducer, composeWithDevTools(), applyMiddleware(middleware));
+const store = createStore(todoAppReducer, applyMiddleware(middleware));
 
 ReactDOM.render(
     <Provider store={store}>
